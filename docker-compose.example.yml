@@ -10,7 +10,7 @@ project:
   links:
     - projectdb
   volumes:
-    - ./repo/web:/var/www/html
+    - ./path/to/project/root:/var/www/html
 projectdb:
   image: mysql:5.5
   volumes_from:

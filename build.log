@@ -1,0 +1,36 @@
+Step 1 : FROM php:7.0.1-apache
+ ---> d802133efea4
+Step 2 : MAINTAINER Otar Zakalashvili <oto.zakalashvili@gmail.com>
+ ---> Using cache
+ ---> 1b1b52ac9a55
+Step 3 : RUN a2enmod rewrite
+ ---> Using cache
+ ---> eb9a1297000d
+Step 4 : RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libpq-dev mysql-client 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr 	&& docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip
+ ---> Using cache
+ ---> e314eb96cebc
+Step 5 : RUN { 		echo 'opcache.memory_consumption=128'; 		echo 'opcache.interned_strings_buffer=8'; 		echo 'opcache.max_accelerated_files=4000'; 		echo 'opcache.revalidate_freq=60'; 		echo 'opcache.fast_shutdown=1'; 		echo 'opcache.enable_cli=1'; 	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
+ ---> Using cache
+ ---> 3d545f90aa51
+Step 6 : RUN apt-get install git -y
+ ---> Using cache
+ ---> 23049e4584a0
+Step 7 : RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && export PATH="$HOME/.composer/vendor/bin:$PATH"
+ ---> Using cache
+ ---> 65c68d8727c8
+Step 8 : RUN curl -0 http://files.drush.org/drush.phar > drush && chmod +x drush && mv drush /usr/local/bin/drush && drush core-status
+ ---> Using cache
+ ---> 95d43ddeefe0
+Step 9 : RUN curl -L -0 https://github.com/hechoendrupal/DrupalConsole/releases/download/0.10.0/drupal.phar > drupal && chmod +x drupal && mv drupal /usr/local/bin/drupal && drupal --version
+ ---> Using cache
+ ---> 8fe08c10d291
+Step 10 : COPY setup.sh /usr/local/bin/setup
+ ---> Using cache
+ ---> 7c473456efb1
+Step 11 : RUN chmod +x /usr/local/bin/setup
+ ---> Using cache
+ ---> 181b2cc71675
+Step 12 : WORKDIR /var/www/html
+ ---> Using cache
+ ---> 3a010fb1c0f5
+Successfully built 3a010fb1c0f5

@@ -1,0 +1,23 @@
+#  First create mysql data only container.
+#  docker run -d --name projectdb-data-container mysql:5.5 --entrypoint /bin/echo MySQL data-only container for Drupal project example
+#  Modify this file according to your project needs.
+
+project:
+  build: .
+  ports:
+    - "98:80"
+    - "502:443"
+  links:
+    - projectdb
+  volumes:
+    - ~/Workspace/Projects/bereik-de-bouw:/var/www/project
+projectdb:
+  image: mysql:5.5
+  volumes_from:
+    - projectdb-data-container
+  environment:
+    TERM: dumb
+    MYSQL_ROOT_PASSWORD: project
+    MYSQL_USER: project
+    MYSQL_PASSWORD: project
+    MYSQL_DATABASE: project

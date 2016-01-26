@@ -25,12 +25,14 @@ Step 9 : RUN curl -L -0 https://github.com/hechoendrupal/DrupalConsole/releases/
  ---> Using cache
  ---> 8fe08c10d291
 Step 10 : COPY setup.sh /usr/local/bin/setup
- ---> Using cache
- ---> 7c473456efb1
+ ---> 744ef0060a35
+Removing intermediate container 35554a0c10dc
 Step 11 : RUN chmod +x /usr/local/bin/setup
- ---> Using cache
- ---> 181b2cc71675
-Step 12 : WORKDIR /var/www/html
- ---> Using cache
- ---> 3a010fb1c0f5
-Successfully built 3a010fb1c0f5
+ ---> Running in 25537095f220
+ ---> 3348c06e5730
+Removing intermediate container 25537095f220
+Step 12 : WORKDIR /var/www/project
+ ---> Running in 6d860050b196
+ ---> 0a22271a5979
+Removing intermediate container 6d860050b196
+Successfully built 0a22271a5979

@@ -42,4 +42,5 @@ RUN chmod +x /usr/local/bin/setup
 
 
 
-WORKDIR /var/www/html
+
+WORKDIR /var/www/project
